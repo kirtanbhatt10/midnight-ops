@@ -10,8 +10,8 @@
 
 ---
 
-> ### ⚠️ Authorized use only
-> **midnight-ops** is built for licensed security professionals operating under **explicit, written permission**. Only use it against systems you own or have a signed contract/scope to test. Unauthorized access to computer systems is illegal — you are solely responsible for staying within scope and within the law.
+> [!WARNING]
+> **Authorized use only.** **midnight-ops** is built for licensed security professionals operating under **explicit, written permission**. Only use it against systems you own or have a signed contract/scope to test. Unauthorized access to computer systems is illegal — you are solely responsible for staying within scope and within the law.
 
 ---
 
