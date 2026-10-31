@@ -1,0 +1,19 @@
+# markdownlint-cli2 configuration
+config:
+  default: true
+  # Allow long lines (checklists and tables run long)
+  MD013: false
+  # Allow inline HTML (README embeds a <video> tag)
+  MD033: false
+  # Allow duplicate headings in different sections (templates reuse names)
+  MD024:
+    siblings_only: true
+  # First line need not be a top-level heading (badges/blockquotes may precede)
+  MD041: false
+  # Ordered-list numbering style is not enforced
+  MD029: false
+globs:
+  - "**/*.md"
+ignores:
+  - "LICENSE"
+  - "node_modules"
