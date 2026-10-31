@@ -1,0 +1,25 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.idea/
+.vscode/
+
+# Engagement data must NEVER be committed — keep it out of the repo
+engagements/
+*.engagement
+notes-*.md
+roe-*.md
+report-*.pdf
+report-*.docx
+evidence/
+*.pcap
+*.key
+*.pem
+.env
+secrets*
+
+# Build / tooling
+node_modules/
+*.log
