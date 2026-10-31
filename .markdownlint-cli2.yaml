@@ -12,6 +12,13 @@ config:
   MD041: false
   # Ordered-list numbering style is not enforced
   MD029: false
+  # Compact checklist style: headings and lists may sit directly next to each other
+  MD022: false
+  MD032: false
+  # Templates intentionally leave blank space for people to fill in
+  MD012: false
+  # Templates use emphasized placeholder lines like *(repeat for each finding)*
+  MD036: false
 globs:
   - "**/*.md"
 ignores:
