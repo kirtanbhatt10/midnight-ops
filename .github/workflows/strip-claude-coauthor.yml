@@ -1,0 +1,29 @@
+name: strip-claude-coauthor
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  rewrite:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Rewrite commit messages
+        env:
+          FILTER_BRANCH_SQUELCH_WARNING: "1"
+        run: |
+          git fetch --tags --force
+          OLD_TREE=$(git rev-parse 'v1.0.0^{tree}')
+          git filter-branch -f --msg-filter 'sed -e "/^[Cc]o-[Aa]uthored-[Bb]y:.*@anthropic\.com>/d" -e "/^Claude-Session:/d" | git stripspace' -- main
+          NEW_TAG=$(git rev-list main | while read c; do [ "$(git rev-parse "$c^{tree}")" = "$OLD_TREE" ] && echo "$c"; done | tail -1)
+          echo "new v1.0.0 -> $NEW_TAG"
+          git log main --format='%h %an | %s' | head -40
+          if git log main --format='%B' | grep -qi 'anthropic\.com'; then echo "trailers still present"; exit 1; fi
+          git push --force origin main
+          git tag -f v1.0.0 "$NEW_TAG"
+          git push --force origin v1.0.0
